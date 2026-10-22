@@ -27,7 +27,7 @@ export default function Home() {
   const navigate = useNavigate();
   const {
     photos, setPhotos, category, setCategory, details, setDetails,
-    bairro, setBairro, local, setLocal, limpar,
+    bairro, local, limpar,
   } = useDenuncia();
 
   const [categorias, setCategorias] = useState([]);
@@ -63,6 +63,7 @@ export default function Home() {
   }
 
   // provisório: usa o GPS do aparelho. No passo 3 isto vira a tela do mapa.
+  /*
   function obterLocalizacao() {
     if (!navigator.geolocation) {
       aviso("A localização não está disponível neste dispositivo.", true);
@@ -76,7 +77,7 @@ export default function Home() {
       },
       () => aviso("Não foi possível obter a localização. Verifique a permissão do navegador.", true)
     );
-  }
+  }*/
 
   async function enviar(event) {
     event.preventDefault();
@@ -153,30 +154,28 @@ export default function Home() {
         </div>
         <p className="photo-count">{photos.length} de {MAX_FOTOS} fotos (mínimo 1)</p>
 
-        {local ? (
+                {local ? (
           <div className="location-card">
             <MapPin size={18} />
             <div className="location-card-text">
               <small>Localização obtida</small>
-              <span>{local.endereco || `${local.lat.toFixed(5)}, ${local.lng.toFixed(5)}`}</span>
+              <span>
+                {[local.endereco, bairro].filter(Boolean).join(" - ") ||
+                  `${local.lat.toFixed(5)}, ${local.lng.toFixed(5)}`}
+              </span>
             </div>
-            <button type="button" className="location-edit" onClick={obterLocalizacao}>Editar</button>
+            <button type="button" className="location-edit" onClick={() => navigate("/local")}>
+              Editar
+            </button>
           </div>
         ) : (
-          <button className="location-button" type="button" onClick={obterLocalizacao}>
+          <button className="location-button" type="button" onClick={() => navigate("/local")}>
             <MapPin size={15} />
             <span>ADICIONAR LOCALIZAÇÃO</span>
           </button>
         )}
 
-        <input
-          className="text-input"
-          type="text"
-          placeholder="Bairro"
-          maxLength={100}
-          value={bairro}
-          onChange={(e) => setBairro(e.target.value)}
-        />
+        
 
         <fieldset className="category-field">
           <legend>O que foi descartado?</legend>
