@@ -432,3 +432,13 @@ button { cursor: pointer; }
 .map-sheet .text-input { margin-top: 0; }
 .map-hint { margin: 0; font-size: 12px; text-align: center; color: #47534d; }
 .map-message { margin: 0; font-size: 13px; text-align: center; color: #b3261e; }
+
+
+
+
+.history-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.status-chip { padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; background: #eef1ef; color: #47534d; }
+.status-analise { background: #e3f0ff; color: #1b5fb5; }
+.status-atendimento { background: #fff3d6; color: #8a6100; }
+.status-resolvida { background: #dff5e8; color: #0f7a46; }
+.status-cancelada { background: #fde7e5; color: #b3261e; }

@@ -46,3 +46,10 @@ export async function enviarDenuncia(body) {
 
   return response.json();
 }
+
+export async function listarResumos(protocolos) {
+  const lista = encodeURIComponent(protocolos.join(","));
+  const response = await fetch(`${API_URL}/api/denuncias?protocolos=${lista}`);
+  if (!response.ok) throw new Error("Não foi possível atualizar o histórico.");
+  return response.json();
+}
