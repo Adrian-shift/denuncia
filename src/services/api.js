@@ -53,3 +53,15 @@ export async function listarResumos(protocolos) {
   if (!response.ok) throw new Error("Não foi possível atualizar o histórico.");
   return response.json();
 }
+
+export async function buscarDenuncia(protocolo) {
+  let response;
+  try {
+    response = await fetch(`${API_URL}/api/denuncias/${encodeURIComponent(protocolo)}`);
+  } catch {
+    throw new Error("Sem conexão com o servidor. Verifique se a API está ligada.");
+  }
+  if (response.status === 404) throw new Error("Denúncia não encontrada.");
+  if (!response.ok) throw new Error("Não foi possível carregar a denúncia.");
+  return response.json();
+}

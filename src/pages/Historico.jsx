@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 import { CabecalhoVoltar } from "../components/Cabecalhos";
+import StatusChip from "../components/StatusChip";
 import { carregarHistorico } from "../services/historico";
 import { listarResumos } from "../services/api";
-
-const classeDoStatus = {
-  "Recebida": "status-recebida",
-  "Em análise": "status-analise",
-  "Em atendimento": "status-atendimento",
-  "Resolvida": "status-resolvida",
-  "Cancelada": "status-cancelada",
-};
 
 export default function Historico() {
   // só entradas com protocolo; a API aceita no máximo 50 por consulta
@@ -37,14 +32,17 @@ export default function Historico() {
             const endereco = r?.endereco ?? local.endereco;
             const bairro = r?.bairro ?? local.bairro;
             return (
-              <article className="history-card" key={local.id}>
-                <div className="history-card-top">
-                  <strong>{local.protocolo}</strong>
-                  {r && <span className={`status-chip ${classeDoStatus[r.status] || ""}`}>{r.status}</span>}
+              <Link className="history-card" to={`/denuncia/${local.protocolo}`} key={local.id}>
+                <div className="history-card-content">
+                  <div className="history-card-top">
+                    <strong>{local.protocolo}</strong>
+                    {r && <StatusChip status={r.status} />}
+                  </div>
+                  <span>{[endereco, bairro].filter(Boolean).join(" - ")}</span>
+                  <small>{local.createdAt}</small>
                 </div>
-                <span>{[endereco, bairro].filter(Boolean).join(" - ")}</span>
-                <small>{local.createdAt}</small>
-              </article>
+                <ChevronRight size={18} />
+              </Link>
             );
           })
         ) : (
