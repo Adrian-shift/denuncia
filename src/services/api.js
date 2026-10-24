@@ -65,3 +65,17 @@ export async function buscarDenuncia(protocolo) {
   if (!response.ok) throw new Error("Não foi possível carregar a denúncia.");
   return response.json();
 }
+
+export async function listarPublicas({ status = "", pagina = 0, tamanho = 20 } = {}) {
+  const params = new URLSearchParams({ pagina, tamanho });
+  if (status) params.set("status", status);
+
+  let response;
+  try {
+    response = await fetch(`${API_URL}/api/denuncias/publicas?${params}`);
+  } catch {
+    throw new Error("Sem conexão com o servidor. Verifique se a API está ligada.");
+  }
+  if (!response.ok) throw new Error("Não foi possível carregar as denúncias.");
+  return response.json();
+}
