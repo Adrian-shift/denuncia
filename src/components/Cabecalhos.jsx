@@ -5,9 +5,6 @@ export function CabecalhoHome({ semAjuda = false }) {
   return (
     <header className="app-header">
       <div className="brand">
-        <div className="brand-mark" aria-hidden="true">
-          <Leaf size={17} strokeWidth={2.2} />
-        </div>
         <div className="brand-copy">
           <strong>EcoIbititá</strong>
           <span>Prefeitura Municipal de Ibititá</span>
