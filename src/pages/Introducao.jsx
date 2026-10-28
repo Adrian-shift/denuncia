@@ -41,10 +41,6 @@ export default function Introducao() {
             <span>Denunciar Lixo</span>
             <ArrowRight size={23} />
           </button>
-
-          <span className="intro-aviso">
-            Simples, rápido e gratuito
-          </span>
         </section>
 
         <section className="intro-passos">
