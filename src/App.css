@@ -497,3 +497,229 @@ button { cursor: pointer; }
 
 .load-more { min-height: 44px; border: 1px solid var(--border-green); border-radius: 8px; background: var(--pale-green); color: var(--green); font-weight: 700; }
 .load-more:disabled { opacity: .6; }
+
+
+
+
+/* ==================================
+   ECOIBITITÁ - TELA DE INTRODUÇÃO
+   ================================== */
+
+.intro {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  color: white;
+  background-color: #005039;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(0, 45, 31, 0.13) 0%,
+      rgba(0, 45, 31, 0.06) 58%,
+      rgba(0, 45, 31, 0.10) 100%
+    ),
+    url("/background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.intro-conteudo {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 28px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-topo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-logo {
+  width: min(100%, 300px);
+  height: auto;
+  object-fit: contain;
+}
+
+.intro-local {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e5f5e9;
+}
+
+.intro-principal {
+  width: 100%;
+  margin-top: clamp(35px, 8vh, 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid rgba(255,255,255,.30);
+  border-radius: 30px;
+  padding: 9px 14px;
+  background: rgba(255,255,255,.10);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.intro-principal h1 {
+  font-size: clamp(30px, 8vw, 40px);
+  line-height: 1.14;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin: 25px 0 16px;
+}
+
+.intro-principal h1 span {
+  color: #c5e783;
+}
+
+.intro-principal p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #e5f2ec;
+  max-width: 380px;
+  margin: 0 0 30px;
+}
+
+.intro-botao {
+  width: 100%;
+  max-width: 350px;
+  min-height: 62px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: #d6f28c;
+  color: #064b36;
+  border: none;
+  border-radius: 16px;
+  font-size: 19px;
+  font-weight: 800;
+  box-shadow: 0 7px 22px rgba(0,0,0,.18);
+  transition: transform .2s, background .2s;
+}
+
+.intro-botao:hover {
+  background: #e4f9ad;
+  transform: translateY(-2px);
+}
+
+.intro-botao:active {
+  transform: scale(.98);
+}
+
+.intro-aviso {
+  font-size: 13px;
+  color: #dcefe4;
+  margin-top: 13px;
+}
+
+.intro-passos {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 48px;
+  text-align: center;
+}
+
+.intro-passos h2 {
+  font-size: 19px;
+  font-weight: 750;
+  margin: 0 0 20px;
+}
+
+.intro-passos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.intro-passo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.intro-passo-icone {
+  width: 49px;
+  height: 49px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(0,60,43,.65);
+}
+
+.intro-passo strong {
+  font-size: 12px;
+  color: #c5e783;
+}
+
+.intro-passo span {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.intro-rodape {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 11px;
+  color: #c8e2d4;
+}
+
+/* Telas com pouca altura */
+@media (max-height: 700px) {
+  .intro-conteudo {
+    padding-top: 18px;
+  }
+
+  .intro-logo {
+    width: min(100%, 230px);
+  }
+
+  .intro-principal {
+    margin-top: 22px;
+  }
+
+  .intro-principal h1 {
+    margin-top: 16px;
+  }
+
+  .intro-passos {
+    padding-top: 28px;
+  }
+}
+
+/* Telas muito estreitas */
+@media (max-width: 360px) {
+  .intro-conteudo {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .intro-principal h1 {
+    font-size: 29px;
+  }
+
+  .intro-principal p {
+    font-size: 15px;
+  }
+}
