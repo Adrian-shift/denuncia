@@ -56,8 +56,36 @@ export default function AjustarLocal() {
       }, 700);
     };
 
-    map.on("moveend", atualizar);
-    atualizar();
+    
+map.on("moveend", atualizar);
+
+if (!local && navigator.geolocation) {
+  setMsg("Obtendo sua localização...");
+
+  navigator.geolocation.getCurrentPosition(
+    ({ coords }) => {
+      map.setView(
+        [coords.latitude, coords.longitude],
+        18
+      );
+      setMsg("");
+    },
+    () => {
+      atualizar();
+      setMsg(
+        "Não foi possível obter sua localização. Você pode mover o mapa manualmente."
+      );
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 15000,
+      maximumAge: 60000,
+    }
+  );
+} else {
+  atualizar();
+}
+
 
     return () => {
       clearTimeout(timer);
