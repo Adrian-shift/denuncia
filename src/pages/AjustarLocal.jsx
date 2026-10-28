@@ -114,7 +114,7 @@ export default function AjustarLocal() {
     const { lat, lng } = mapRef.current.getCenter();
     setLocal({ lat, lng, endereco: endereco || null });
     setBairro(bairroLocal.trim());
-    navigate("/");
+    navigate("/denunciar");
   }
 
   const textoDoPino = buscandoEndereco

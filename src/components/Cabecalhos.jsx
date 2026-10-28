@@ -22,7 +22,7 @@ export function CabecalhoHome({ semAjuda = false }) {
   );
 }
 
-export function CabecalhoVoltar({ titulo, para = "/" }) {
+export function CabecalhoVoltar({ titulo, para = "/denunciar" }) {
   const navigate = useNavigate();
   return (
     <header className="app-header simple">
